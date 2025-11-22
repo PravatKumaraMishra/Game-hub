@@ -13,8 +13,10 @@ export default function App() {
       <Show above="lg">
         <GridItem area="aside">Aside</GridItem>
       </Show>
-      <GridItem area="main">Main</GridItem>
-      <GameGride />
+      <GridItem area="main">
+        Main
+        <GameGride />
+      </GridItem>
     </Grid>
   );
 }

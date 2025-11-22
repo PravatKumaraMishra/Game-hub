@@ -5,9 +5,11 @@ import { CanceledError } from "axios";
 export interface Game {
   id: number;
   name: string;
+  image: string;
+  short_description: string;
 }
 
-export interface FetchGameResponse {
+interface FetchGameResponse {
   count: number;
   results: Game[];
 }
