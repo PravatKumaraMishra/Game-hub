@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://api.gamebrain.co/v1",
+  baseURL: "https://api.rawg.io/api",
   params: {
-    "api-key": "c4cc3518caae4698b6a0e538483e2d05",
+    key: "f6750362b20645f4994825acd3e7031a",
   },
 });
 

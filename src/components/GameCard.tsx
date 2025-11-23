@@ -7,11 +7,10 @@ interface Props {
 
 export default function GameCard({ game }: Props) {
   return (
-    <Card height="350px" borderRadius={10} overflow="hidden">
-      <Image src={game.image} />
+    <Card borderRadius={10} overflow="hidden">
+      <Image src={game.background_image} />
       <CardBody>
         <Heading fontSize="1xl">{game.name}</Heading>
-        <Text>{game.short_description}</Text>
       </CardBody>
     </Card>
   );
