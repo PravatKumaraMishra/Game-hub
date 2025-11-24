@@ -34,6 +34,7 @@ export default function GenreList({ onSelectGenre, selectedGenre }: Props) {
                 borderRadius={8}
                 objectFit="cover"
                 src={getCroppedImageUrl(genre.image_background)}
+                paddingY="2px"
               />
               <Button
                 whiteSpace="normal"
