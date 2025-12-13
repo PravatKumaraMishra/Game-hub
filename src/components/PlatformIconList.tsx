@@ -1,5 +1,5 @@
 import { BsGlobe } from "react-icons/bs";
-import type { Platform } from "../hooks/useGames";
+import type { Platform } from "../hooks/usePlatforms";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
   FaAndroid,

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { GameQuery } from "../App";
 import apiClient from "../services/api-client";
 import type { FetchData } from "../services/api-client";
+import type { Platform } from "./usePlatforms";
 
 export interface Game {
   id: number;
@@ -9,12 +10,6 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
-}
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
 }
 
 const useGames = (gameQuery: GameQuery) =>
