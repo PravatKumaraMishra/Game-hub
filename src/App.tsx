@@ -45,6 +45,7 @@ export default function App() {
               onSelectPlatform={(platform) =>
                 setGameQuery({ ...gameQuery, platformId: platform.id })
               }
+              selectedPlatformId={gameQuery.platformId}
             />
             <SortSelecter
               onSelectSortOrder={(sortOrder) =>
