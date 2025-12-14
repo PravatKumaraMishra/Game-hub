@@ -9,9 +9,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
+  scrollableTarget?: string;
 }
 
-export default function GameGride({ gameQuery }: Props) {
+export default function GameGride({ gameQuery, scrollableTarget }: Props) {
   const {
     data,
     error,
@@ -34,6 +35,7 @@ export default function GameGride({ gameQuery }: Props) {
         next={fetchNextPage}
         hasMore={hasNextPage}
         loader={<Spinner />}
+        scrollableTarget={scrollableTarget}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>

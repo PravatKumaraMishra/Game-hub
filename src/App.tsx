@@ -21,6 +21,8 @@ export default function App() {
     <Grid
       templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
       templateColumns={{ base: "1fr", lg: "200px 1fr" }}
+      templateRows={{ base: "auto 1fr", lg: "auto 1fr" }}
+      height="100vh"
     >
       <GridItem area="nav">
         <NavBar
@@ -28,14 +30,14 @@ export default function App() {
         />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside" paddingX={5}>
+        <GridItem area="aside" paddingX={5} overflowY="auto">
           <GenreList
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
             selectedGenre={gameQuery.genre}
           />
         </GridItem>
       </Show>
-      <GridItem area="main">
+      <GridItem area="main" overflowY="auto" id="mainArea">
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery} />
           <HStack spacing={3} marginBottom={5}>
@@ -53,7 +55,7 @@ export default function App() {
             />
           </HStack>
         </Box>
-        <GameGride gameQuery={gameQuery} />
+        <GameGride scrollableTarget="mainArea" gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
