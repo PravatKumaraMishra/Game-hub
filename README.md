@@ -1,75 +1,60 @@
-# React + TypeScript + Vite
+# Game Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React and TypeScript game discovery application using the RAWG API, Chakra UI, and TanStack Query.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search games by name.
+- Filter by genre and platform.
+- Change sorting and browse an infinite-scrolling game grid.
+- View ratings, platform icons, and loading skeletons.
+- Toggle the color mode.
 
-## React Compiler
+## Requirements
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Node.js `^20.19.0 || >=22.12.0` and npm.
+- A RAWG API key for live game data.
 
-Note: This will impact Vite dev & build performances.
+## Run locally
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+git clone https://github.com/PravatKumaraMishra/Game-hub.git
+cd Game-hub
+npm ci
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Create `.env.local` in the project root:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```dotenv
+VITE_RAWG_API_KEY=your_rawg_api_key
 ```
+
+Restart Vite after changing the key. Search for a game, select a genre or platform, and use the sorting menu to refine the results.
+
+```sh
+npm run dev
+```
+
+Open the local URL printed by Vite (normally `http://localhost:5173`).
+
+## Available commands
+
+| Command | Script |
+| --- | --- |
+| `npm run dev` | `vite` |
+| `npm run build` | `tsc -b && vite build` |
+| `npm run lint` | `eslint .` |
+| `npm run preview` | `vite preview` |
+
+`npm run preview` serves the output of `npm run build`; it does not build the project itself.
+
+## Project structure
+
+- `src/components/`: navigation, filters, game cards, and grid.
+- `src/hooks/`: game, genre, and platform queries.
+- `src/services/APIClient.ts`: RAWG requests.
+- `src/theme.ts`: Chakra theme.
+
+## Notes
+
+RAWG data requires network access and a valid key. A `VITE_` variable is included in browser code; use a key intended for client use and follow the provider’s usage rules. If results fail to load, inspect the network response and key configuration.
